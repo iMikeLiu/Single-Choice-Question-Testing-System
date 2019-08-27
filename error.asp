@@ -1,7 +1,19 @@
 <html>
-<p style="color:blue">您的学号和姓名、班级不匹配！3秒钟后会重定向至主页！</p>
 <%
 Session("error")=true
 %>
-<%Response.redirect("index.asp")%>
+<script>
+alert("您的信息不正确（验证码、学号、姓名、班级）！");
+function sleep(delay) {
+  var start = (new Date()).getTime();
+  while ((new Date()).getTime() - start < delay) {
+    continue;
+  }
+ 
+}
+sleep(100);
+ location.href="index.asp"
+
+</script>
+
 </html>

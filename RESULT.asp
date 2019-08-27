@@ -5,10 +5,12 @@
 IF session("tested")=true THEN
 %>
 <center><p color="red" size="10px">请勿作弊！你的行为已被登记在考试作弊公示区域！</p></center>
+<center><p color="red" size="10px">如有异议请立刻报告老师！</p></center>
 <center><a href="index.asp" size="10px">单击返回主页</a></center>
 <%
 conn.Execute("select * from user")
 conn.Execute("update user set zuobi = 1 where (name = '"+Session("name")+"')")
+
 ELSE
 Session("tested")=true
 %>
@@ -55,6 +57,7 @@ Set rs = conn.Execute( sql )
 ycorrect=0
 rsCount=0
 '给出正确答案并评分
+Response.write "<a>"
 if Application("q_show")=1 then Response.Write "正确答案："
 rs.movefirst
 Do while not rs.eof
@@ -66,12 +69,13 @@ Do while not rs.eof
  rs.movenext
  Response.Write "  "
 loop
+Response.write "</a>"
 
 Response.Write "<br>"
 
 score=clng(ycorrect*Application("q_cost"))
 if Application("q_show")=1 then
-  Response.Write "<br> 你的答案："
+  Response.Write "<br> <a>你的答案："
   %>
 
   <%
@@ -79,13 +83,13 @@ if Application("q_show")=1 then
     if(Request.Form("ans"&cint(i))<>"") Then
     Response.Write Request.Form("ans"&cint(i))
     else 
-    Response.Write "&nbsp"
+    Response.Write "  "
     end if
     Response.Write "  "
   next
   Response.Write "<br>"
 end if
-
+Response.Write "</a>"
 strsql="update user set score = " & score & " where (name='" &name & "') and score < " & score & ""
   conn.execute(strsql)
   Response.Write "<br><br>"

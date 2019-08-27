@@ -81,7 +81,8 @@ do while not rs.eof
     <tr bgcolor="#66CCFF">    
       <td width="51%" class="unnamed1" bgcolor="#ffffff" height="15" colspan="4">
        <b><%="("&i&")"%> <left> <%=rs("question")%></b></td>    
-    </tr>    
+    </tr>  
+    <%IF rs("type") = 1 then%>  
       <tr bgcolor="#99CCFF">    
       <td width="24%" class="unnamed1" bgcolor="#ABF2F5" height="1"><p align="left"><input name="ans<%=i%>" type="radio" value="A"> <%=rs("A")%></p> </td>     
       <td width="25%" class="unnamed1" bgcolor="#ABF2F5" height="1"><input name="ans<%=i%>" type="radio"     
@@ -89,7 +90,10 @@ do while not rs.eof
       <td width="25%" class="unnamed1" bgcolor="#ABF2F5" height="1"><input name="ans<%=i%>" type="radio"     
       value="C"> <%=rs("C")%></td>     
       <td width="25%" class="unnamed1" bgcolor="#ABF2F5" height="1"><input name="ans<%=i%>" type="radio"     
-      value="D"> <%=rs("D")%></td>     
+      value="D"> <%=rs("D")%></td> 
+    <%else %>    
+      <td width="99%" class="unnamed1" ><p align="left"><textarea name="ans<%=i%>"></textarea></p> </td>     
+    <%end if%>
     </tr>     
   </table>     
   <span class="unnamed1"><%     

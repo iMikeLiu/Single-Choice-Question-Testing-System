@@ -1,5 +1,13 @@
 <!--#include file="conn.asp" -->
 <%
+  IF request.QueryString("teachername") <> Application("teachername") THEN 
+%>
+  <script>alert("无权查看！");</script>
+
+<%
+  ELSE
+%>
+<%
 	Set rs=conn.Execute("select * from test")
 
 	num=request.QueryString("num")
@@ -13,7 +21,7 @@
 <meta charset="GBK">
 <body>
 <center>
-<form action="probset.asp" id="FORM1" method="post" name="FORM1">
+<form action="probset.asp?teachername=<%=Application("teachername")%>" id="FORM1" method="post" name="FORM1">
 <center>第 <input id="cord" name="cord" value="<%=rs(1)%>"> 个记录</center>
 <p>是否为选择题</p><input id="select" name="select" value="<%=rs(0)%>">
 <br/>
@@ -27,6 +35,8 @@
 <p>C选项</p><textarea   style="overflow:visible;height:100px;width:100px"  id="c" name="c"><%=rs(5)%></textarea>
 <br/>
 <p>D选项</p><textarea   style="overflow:visible;height:100px;width:100px"  id="d" name="d"><%=rs(6)%></textarea>
+<br/>
+<p>答案</p><textarea   style="overflow:visible;height:100px;width:100px"  id="answer" name="answer"><%=rs(7)%></textarea>
 <br/>
 <input type="submit" value="修改">
 </form>
@@ -44,3 +54,4 @@ function previous(){
 <button onclick="next()">下一个记录</button>
 </body>
 </html>
+<%END IF%>

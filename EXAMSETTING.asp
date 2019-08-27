@@ -110,13 +110,13 @@
 	<tr>
       <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="create.asp?teachername=<%=Application("teachername")%>">信息录入模块</a></font>    
           </div></td>   
-      <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="delete.asp">信息删除模块</a></font>    
+      <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="delete.asp?teachername=<%=Application("teachername")%>">信息删除模块</a></font>    
           </div></td>   
 	</tr>
 	<tr>
-      <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="reset.asp">重置教师密码</a></font>    
+      <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="reset.asp?teachername=<%=Application("teachername")%>">重置教师密码</a></font>    
           </div></td>   
-      <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="problem.asp">题目信息修改</a></font>    
+      <td width="260" height="5"><div align="center"><center><p><font size="2" color="#0000FF"><a href="problem.asp?teachername=<%=Application("teachername")%>">题目信息修改</a></font>    
           </div></td>   
     </tr>   
 <!--#include file="info.asp" -->
